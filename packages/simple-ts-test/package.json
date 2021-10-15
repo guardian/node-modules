@@ -1,6 +1,6 @@
 {
   "name": "@guardian/simple-ts-test",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "A simple module to test the publication of a TS based project.",
   "license": "ISC",
   "author": "",
