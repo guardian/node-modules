@@ -5,12 +5,20 @@ importers:
   .:
     specifiers:
       '@changesets/cli': ^2.17.0
+      '@guardian/eslint-config-typescript': ^0.7.0
       '@guardian/prettier': ^0.7.0
+      eslint: ^7.19.0
+      eslint-plugin-prettier: ^4.0.0
       prettier: ^2.4.1
+      typescript: ^4.1.3
     devDependencies:
       '@changesets/cli': 2.17.0
+      '@guardian/eslint-config-typescript': 0.7.0_5dc17954397827e5be42442a8923306d
       '@guardian/prettier': 0.7.0_prettier@2.4.1
+      eslint: 7.32.0
+      eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.4.1
       prettier: 2.4.1
+      typescript: 4.4.4
 
   packages/simple-ts-test:
     specifiers:
@@ -987,6 +995,22 @@ packages:
     dependencies:
       eslint: 7.32.0
       eslint-config-prettier: 8.3.0_eslint@7.32.0
+      prettier: 2.4.1
+      prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-prettier/4.0.0_eslint@7.32.0+prettier@2.4.1:
+    resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
+    engines: {node: '>=6.0.0'}
+    peerDependencies:
+      eslint: '>=7.28.0'
+      eslint-config-prettier: '*'
+      prettier: '>=2.0.0'
+    peerDependenciesMeta:
+      eslint-config-prettier:
+        optional: true
+    dependencies:
+      eslint: 7.32.0
       prettier: 2.4.1
       prettier-linter-helpers: 1.0.0
     dev: true

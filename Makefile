@@ -52,12 +52,12 @@ test: --check-env install
 .PHONY: lint # run eslint over all source code
 lint: --check-env install
 	$(call log,"Linting code")
-	@pnpm lint --recursive
+	@eslint . --ext .ts,.tsx,.js
 
 .PHONY: fix # try to fix eslint errors
 fix: --check-env install
 	$(call log,"Attempting to fix lint errors")
-	@pnpm lint --recursive -- --fix
+	@eslint . --ext .ts,.tsx,.js --fix
 
 .PHONY: tsc # check all typescript compiles
 tsc: --check-env install
