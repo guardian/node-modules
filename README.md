@@ -16,7 +16,7 @@ The development environment is automatically managed by the project.
 
 The commands below will prompt you if you need to do anything extra to run them correctly.
 
-_See the [`makefile`](./makefile) for more info._
+_Run `make help` or see the [`makefile`](./makefile) for more info._
 
 ## Development
 
