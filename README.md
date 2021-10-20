@@ -1,4 +1,4 @@
-# `node_modules`
+# `node-modules`
 
 🧪 This is an experimental monorepo for `@guardian/*` NPM packages.
 
@@ -61,7 +61,9 @@ $ make publish
 Behind the scenes this repo uses the following tools:
 
 ### [`pnpm`](https://pnpm.io/)
+
 To manage the monorepo.
 
 ### [`@changesets/cli`](https://github.com/atlassian/changesets)
+
 To manage the release process.
