@@ -20,7 +20,7 @@ _Run `make help` or see the [`makefile`](./makefile) for more info._
 
 ## Development
 
-Common tasks are defined in the `makefile`. Run them from the terminal using `make myTaskName`.
+Common tasks are defined in the `makefile`. Run them from the terminal using `make myTaskName`:
 
 ```bash
 # start the dev server
