@@ -11,80 +11,78 @@ define info
     @echo -e "\x1b[2m$(1)\x1b[0m"
 endef
 
-.PHONY: help
+.DEFAULT_GOAL: help
+.PHONY: help # list available commands
 help:
-	@fnm exec node ./l.js
+	@fnm exec node ./lib/describe-makefile.js
 
-# ENV CHECKS ####################################################
+# ENVIRONMENT ####################################################
 
-.PHONY: validate-node
-# will error with link to install FNM if it's not installed
-validate-node:
+.PHONY: --use-node-version
+--use-node-version:
 	$(call log,"Checking node version")
 	@bash -l -c 'fnm use --install-if-missing || { echo -e "\x1b[31mYou need to install FNM:\x1b[0m https://github.com/Schniz/fnm#installation"; exit 1; }'
 
-.PHONY: validate-package-manager
-# ensure the correct package manager is installed
-validate-package-manager:
-	@bash -l -c 'type -t pnpm > /dev/null || { echo -e "\x1b[2mInstalling pnpm"; fnm exec npm install -g pnpm; }'
+.PHONY: --ensure-package-manager # ensure the correct package manager is available
+--ensure-package-manager:
+	@bash -l -c 'type -t pnpm > /dev/null || { fnm exec npm install pnpm --no-save --silent; }'
 
-.PHONY: check-env
-check-env: validate-node validate-package-manager
+.PHONY: --check-env
+--check-env: --use-node-version --ensure-package-manager
 
 # DEPENDENCY MANAGEMENT #########################################
 
-.PHONY: install
-# install deps using pnpm in .nvmrc-mandated node
-install: check-env
+.PHONY: install # install deps using correct package manager in .nvmrc-mandated node
+install: --check-env
 	$(call log,"Installing dependencies")
-	@bash -l -c 'fnm exec pnpm install --reporter=silent'
+	@bash -l -c 'fnm exec pnpm install'
 
 # WORKFLOWS #####################################################
 
-.PHONY: dev
-dev: check-env install
+.PHONY: dev # run the dev server and test suite in watch mode
+dev: --check-env install
 	$(call log,"Starting the dev environment")
 	@pnpm test -- --watch
 
-.PHONY: test
-test: check-env install
+.PHONY: test # run all tests
+test: --check-env install
 	$(call log,"Running tests")
 	@pnpm test --recursive
 
-.PHONY: lint
-lint: check-env install
+.PHONY: lint # run eslint over all source code
+lint: --check-env install
 	$(call log,"Linting code")
 	@pnpm lint --recursive
 
-.PHONY: fix
-fix: check-env install
+.PHONY: fix # try to fix eslint errors
+fix: --check-env install
 	$(call log,"Attempting to fix lint errors")
 	@pnpm lint --recursive -- --fix
 
-.PHONY: tsc
-tsc: check-env install
+.PHONY: tsc # check all typescript compiles
+tsc: --check-env install
 	$(call log,"Checking types")
 	@pnpm tsc --recursive
 
-.PHONY: validate
-validate: check-env install test lint tsc
+.PHONY: validate # run tests, eslint and tsc
+validate: --check-env install test lint tsc
 
-.PHONY: build
-build: check-env install
+.PHONY: build # build all packages
+build: --check-env install
 	$(call log,"Building all packages")
 	@pnpm build --recursive --parallel
 
-.PHONY: changeset
-changeset: check-env install
+.PHONY: changeset # create a new changeset
+changeset: --check-env install
 	$(call log,"Creating new changeset")
 	@pnpm changeset
 
-.PHONY: bump
-bump: check-env install
+.PHONY: bump # bump all updated packages
+bump: --check-env install
 	$(call log,"Versioning updated packages")
 	@pnpm changeset version
 
-.PHONY: publish
-publish: check-env install
+.PHONY: publish # publish all updated packages
+publish: --check-env install
 	$(call log,"Publishing updated packages")
 	@pnpm changeset publish
