@@ -1,4 +1,7 @@
+# make node_modules binaries available
 export PATH := node_modules/.bin:$(PATH)
+
+# standardise on a shell
 export SHELL := /usr/bin/env bash
 
 # UTILS #########################################################
@@ -16,73 +19,67 @@ endef
 help:
 	@fnm exec node ./lib/describe-makefile.js
 
-# ENVIRONMENT ####################################################
+# ENVIRONMENT #########################################
 
-.PHONY: --use-node-version
---use-node-version:
-	$(call log,"Checking node version")
-	@bash -l -c 'fnm use --install-if-missing || { echo -e "\x1b[31mYou need to install FNM:\x1b[0m https://github.com/Schniz/fnm#installation"; exit 1; }'
-
-.PHONY: --ensure-package-manager # ensure the correct package manager is available
---ensure-package-manager:
-	@bash -l -c 'type -t pnpm > /dev/null || { fnm exec npm install pnpm --no-save --silent; }'
-
-.PHONY: --check-env
---check-env: --use-node-version --ensure-package-manager
-
-# DEPENDENCY MANAGEMENT #########################################
-
-.PHONY: install # install deps using correct package manager in .nvmrc-mandated node
-install: --check-env
-	$(call log,"Installing dependencies")
-	@bash -l -c 'fnm exec pnpm install'
+.PHONY: install # install everything you need to run the project
+# - use FNM to install the NODE version we need, or prompt to install FNM if it's missing
+# - use npm to install pnpm to local node_modules if it's not available on the system
+#   - this means we can use pnpm in here as if it was globally installed
+#   - we use --no-save to just get the files, not save it in package.json
+# - install deps using correct package manager in .nvmrc-mandated node
+install:
+	$(call log,"Checking Node")
+	@fnm use --install-if-missing || { echo -e "\x1b[31mYou need to install FNM:\x1b[0m https://github.com/Schniz/fnm#installation"; exit 1; }
+	@type -t pnpm > /dev/null || { npm install pnpm --no-save --silent; }
+	$(call log,"Refreshing dependencies")
+	@pnpm install
 
 # WORKFLOWS #####################################################
 
 .PHONY: dev # run the dev server and test suite in watch mode
-dev: --check-env install
+dev: install
 	$(call log,"Starting the dev environment")
-	@pnpm test -- --watch
+	@pnpm test --watch
 
 .PHONY: test # run all tests
-test: --check-env install
+test: install
 	$(call log,"Running tests")
 	@pnpm test --recursive
 
 .PHONY: lint # run eslint over all source code
-lint: --check-env install
+lint: install
 	$(call log,"Linting code")
 	@eslint . --ext .ts,.tsx,.js
 
 .PHONY: fix # try to fix eslint errors
-fix: --check-env install
+fix: install
 	$(call log,"Attempting to fix lint errors")
 	@eslint . --ext .ts,.tsx,.js --fix
 
 .PHONY: tsc # check all typescript compiles
-tsc: --check-env install
+tsc: install
 	$(call log,"Checking types")
-	@pnpm tsc --recursive
+	@tsc
 
 .PHONY: validate # run tests, eslint and tsc
-validate: --check-env install test lint tsc
+validate: install test lint tsc
 
 .PHONY: build # build all packages
-build: --check-env install
+build: install
 	$(call log,"Building all packages")
 	@pnpm build --recursive --parallel
 
 .PHONY: changeset # create a new changeset
-changeset: --check-env install
+changeset: install
 	$(call log,"Creating new changeset")
 	@pnpm changeset
 
 .PHONY: bump # bump all updated packages
-bump: --check-env install
+bump: install
 	$(call log,"Versioning updated packages")
 	@pnpm changeset version
 
 .PHONY: publish # publish all updated packages
-publish: --check-env install
+publish: install
 	$(call log,"Publishing updated packages")
 	@pnpm changeset publish
