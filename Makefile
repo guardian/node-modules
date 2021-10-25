@@ -7,11 +7,7 @@ export SHELL := /usr/bin/env bash
 # UTILS #########################################################
 
 define log
-    @echo -e "\x1b[2m$(1)\x1b[0m"
-endef
-
-define info
-    @echo -e "\x1b[2m$(1)\x1b[0m"
+    @echo -e "\x1b[34m[ $(1) ]\x1b[0m"
 endef
 
 .DEFAULT_GOAL: help
@@ -28,10 +24,17 @@ help:
 #   - we use --no-save to just get the files, not save it in package.json
 # - install deps using correct package manager in .nvmrc-mandated node
 install:
+	@type -t fnm > /dev/null  || { \
+		echo -e "\x1b[31mThis project uses \x1b[1mfnm\x1b[0;31m to manage node versions.\x1b[0m"; \
+		echo -e "You need to install it to continue."; \
+		echo -e "Run \x1b[36mbrew install fnm\x1b[0m, or see \x1b[36mhttps://github.com/Schniz/fnm#installation\x1b[0m."; \
+		exit 1; \
+	}
 	$(call log,"Checking Node")
-	@fnm use --install-if-missing || { echo -e "\x1b[31mYou need to install FNM:\x1b[0m https://github.com/Schniz/fnm#installation"; exit 1; }
-	@type -t pnpm > /dev/null || { npm install pnpm --no-save --silent; }
+	@fnm use --install-if-missing
+
 	$(call log,"Refreshing dependencies")
+	@type -t pnpm > /dev/null || npm install pnpm --no-save --silent;
 	@pnpm install
 
 # WORKFLOWS #####################################################
@@ -48,7 +51,7 @@ test: install
 
 .PHONY: lint # run eslint over all source code
 lint: install
-	$(call log,"Linting code")
+	$(call log,"Linting files")
 	@eslint . --ext .ts,.tsx,.js
 
 .PHONY: fix # try to fix eslint errors
