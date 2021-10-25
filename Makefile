@@ -47,7 +47,7 @@ dev: install
 .PHONY: test # run all tests
 test: install
 	$(call log,"Running tests")
-	@pnpm test --recursive
+	@pnpm jest
 
 .PHONY: lint # run eslint over all source code
 lint: install
