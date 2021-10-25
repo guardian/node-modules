@@ -13,6 +13,7 @@ endef
 .DEFAULT_GOAL: help
 .PHONY: help # list available commands
 help:
+	$(call log,"Listing \'make\' options")
 	@fnm exec node ./lib/describe-makefile.js
 
 # ENVIRONMENT #########################################
