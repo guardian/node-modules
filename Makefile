@@ -7,7 +7,7 @@ export SHELL := /usr/bin/env bash
 # UTILS #########################################################
 
 define log
-    @echo -e "\x1b[34m[ $(1) ]\x1b[0m"
+    @echo -e "\x1b[2m[ $(1) ]\x1b[0m"
 endef
 
 .DEFAULT_GOAL: help
