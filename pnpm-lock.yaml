@@ -10,6 +10,7 @@ importers:
       '@types/jest': ^27.0.2
       eslint: ^7.19.0
       eslint-import-resolver-typescript: ^2.5.0
+      eslint-plugin-import: ^2.25.2
       eslint-plugin-prettier: ^4.0.0
       jest: ^27.3.1
       prettier: ^2.4.1
@@ -21,7 +22,8 @@ importers:
       '@guardian/prettier': 0.7.0_prettier@2.4.1
       '@types/jest': 27.0.2
       eslint: 7.32.0
-      eslint-import-resolver-typescript: 2.5.0_eslint@7.32.0
+      eslint-import-resolver-typescript: 2.5.0_560ef94424f7023f0ab025f67f79aa67
+      eslint-plugin-import: 2.25.2_eslint@7.32.0
       eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.4.1
       jest: 27.3.1
       prettier: 2.4.1
@@ -1969,7 +1971,7 @@ packages:
       resolve: 1.20.0
     dev: true
 
-  /eslint-import-resolver-typescript/2.5.0_eslint@7.32.0:
+  /eslint-import-resolver-typescript/2.5.0_560ef94424f7023f0ab025f67f79aa67:
     resolution: {integrity: sha512-qZ6e5CFr+I7K4VVhQu3M/9xGv9/YmwsEXrsm3nimw8vWaVHRDrQRp26BgCypTxBp3vUp4o5aVEJRiy0F2DFddQ==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -1978,6 +1980,7 @@ packages:
     dependencies:
       debug: 4.3.2
       eslint: 7.32.0
+      eslint-plugin-import: 2.25.2_eslint@7.32.0
       glob: 7.2.0
       is-glob: 4.0.3
       resolve: 1.20.0
@@ -2026,6 +2029,28 @@ packages:
       object.values: 1.1.5
       pkg-up: 2.0.0
       read-pkg-up: 3.0.0
+      resolve: 1.20.0
+      tsconfig-paths: 3.11.0
+    dev: true
+
+  /eslint-plugin-import/2.25.2_eslint@7.32.0:
+    resolution: {integrity: sha512-qCwQr9TYfoBHOFcVGKY9C9unq05uOxxdklmBXLVvcwo68y5Hta6/GzCZEMx2zQiu0woKNEER0LE7ZgaOfBU14g==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+    dependencies:
+      array-includes: 3.1.4
+      array.prototype.flat: 1.2.5
+      debug: 2.6.9
+      doctrine: 2.1.0
+      eslint: 7.32.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-module-utils: 2.7.1
+      has: 1.0.3
+      is-core-module: 2.8.0
+      is-glob: 4.0.3
+      minimatch: 3.0.4
+      object.values: 1.1.5
       resolve: 1.20.0
       tsconfig-paths: 3.11.0
     dev: true

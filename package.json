@@ -1,8 +1,8 @@
 {
   "name": "csti",
   "version": "0.1.0",
-  "description": "CSTI monorepo",
   "private": true,
+  "description": "CSTI monorepo",
   "license": "ISC",
   "devDependencies": {
     "@changesets/cli": "^2.17.0",
@@ -11,6 +11,7 @@
     "@types/jest": "^27.0.2",
     "eslint": "^7.19.0",
     "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.3.1",
     "prettier": "^2.4.1",
