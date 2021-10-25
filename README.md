@@ -1,51 +1,72 @@
 # `node-modules`
 
-🧪 This is an experimental monorepo for `@guardian/*` NPM packages.
+> 🧪 An experimental monorepo for `@guardian/*` NPM packages.
 
-It is intended to make it as easy as possible to develop and update these packages in accordance with [the Guardian's recommendations](https://github.com/guardian/recommendations/blob/main/npm-packages.md).
+This repo is intended to make it as easy as possible to develop and update packages in accordance with [the Guardian's recommendations](https://github.com/guardian/recommendations/blob/main/npm-packages.md).
 
-It's not ready for people to add their packages yet, but that is 💯 the plan.
+## Bring your package
 
-## Prerequisites
+🚧 _It's not ready for new packages yet, but when it is..._
 
-It uses [changesets](https://github.com/atlassian/changesets) to manage package releases. Make sure you understand [how changesets work](https://github.com/atlassian/changesets/blob/main/docs/detailed-explanation.md).
+Packages only need to worry about what they do – everything else is managed by the project.
 
-## Node, dependencies etc
+> 1. Create a directory in `./packages`
+> 2. Add a `package.json`, `README.md` and `src/index.ts`
+>
+> You now have a minimal but viable, testable, publishable package.
 
-The development environment is automatically managed by the project.
+### Workflows
 
-The commands below will prompt you if you need to do anything extra to run them correctly.
+The following workflows are pre-configured:
 
-_Run `make help` or see the [`makefile`](./makefile) for more info._
+-   [x] Node version management
+-   [x] NPM package management
+-   [x] TypeScript configuration
+-   [x] Eslint configuration
+-   [x] Testing (using [Jest](https://jestjs.io/))
+-   [ ] Bundling (using [Rollup](https://rollupjs.org/))
+-   [ ] Versioning (using [changesets](https://github.com/atlassian/changesets))
+-   [ ] Publishing (using [changesets](https://github.com/atlassian/changesets))
 
 ## Development
 
-Common tasks are defined in the `makefile`. Run them from the terminal using `make myTaskName`:
+Common development tasks are defined in the [`makefile`](./Makefile).
+
+Run them from the terminal using `make`:
+
+-   `make help` list available commands
+-   `make dev` run the dev server and test suite in watch mode
+-   `make validate` run tests, lint code and check types. They can also be run individually:
+    -   `make lint` run eslint over all source code
+    -   `make test` run all tests
+    -   `make tsc` check all typescript compiles
+-   `make fix` try to automatically fix any validation errors
+-   `make build` build all packages
+-   `make changeset` create a new changeset
+-   `make bump` bump all updated packages
+-   `make publish` publish all updated packages
+
+_Note that project dependencies (node version, package manager, NPM dependencies etc) are automatically managed by the project – you can just use these `make` commands._
+
+_You'll be prompted to install anything you need._
+
+### Advanced
+
+Behind the scenes, the project is a [pnpm workspace](https://pnpm.io/workspaces).
+
+This is managed in the `makefile` for most part, without the developer needing to get too deep into the weeds.
+
+If you need to do more than the tasks defined above – adding a dependency to your package, for example – you should use `pnpm` directly.
+
+See [the pnpm docs](https://pnpm.io) for full information.
+
+## Publishing
+
+This project uses [changesets](https://github.com/atlassian/changesets) to manage package releases.
+
+Make sure you understand [how changesets work](https://github.com/atlassian/changesets/blob/main/docs/detailed-explanation.md) before making a new release.
 
 ```bash
-# start the dev server
-$ make dev
-
-# run all code quality checks (tests, linting and types)
-$ make validate
-
-# if you get lint errors, you can attempt to automatically fix them
-$ make fix
-
-# you can also run the code quality checks independently
-$ make test
-$ make lint
-$ make tsc
-```
-
-### Publishing updates
-
-Before running any of these, make sure you understand [how changesets work](https://github.com/atlassian/changesets/blob/main/docs/detailed-explanation.md).
-
-```bash
-# build all packages
-$ make build
-
 # generate a new changeset
 $ make changeset
 
@@ -55,15 +76,3 @@ $ make bump
 # push the new versions to NPM
 $ make publish
 ```
-
-## Tooling
-
-Behind the scenes this repo uses the following tools:
-
-### [`pnpm`](https://pnpm.io/)
-
-To manage the monorepo.
-
-### [`@changesets/cli`](https://github.com/atlassian/changesets)
-
-To manage the release process.
