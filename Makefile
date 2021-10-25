@@ -74,7 +74,7 @@ validate: install test lint tsc
 .PHONY: build # build all packages
 build: install
 	$(call log,"Building all packages")
-	@pnpm build --recursive --parallel
+	@rollup -c
 
 .PHONY: changeset # create a new changeset
 changeset: install
