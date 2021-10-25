@@ -4,7 +4,7 @@
 
 This repo is intended to make it as easy as possible to develop and update packages in accordance with [the Guardian's recommendations](https://github.com/guardian/recommendations/blob/main/npm-packages.md).
 
-## Bring your package
+## Just your source code
 
 🚧 _It's not ready for new packages yet, but when it is..._
 
@@ -13,7 +13,7 @@ Packages only need to worry about what they do – everything else is managed by
 > 1. Create a directory in `./packages`
 > 2. Add a `package.json`, `README.md` and `src/index.ts`
 >
-> You now have a minimal but viable, testable, publishable package.
+> You now have a minimal but verifiable, publishable package.
 
 ### Workflows
 
