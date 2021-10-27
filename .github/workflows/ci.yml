@@ -18,4 +18,6 @@ jobs:
       - uses: guardian/actions-setup-node@v2.4.1
         with:
           cache: 'pnpm'
-      - run: make validate
+      - run: pnpm test
+      - run: pnpm tsc
+      - run: pnpm lint

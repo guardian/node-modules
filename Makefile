@@ -56,22 +56,22 @@ dev: install
 .PHONY: test # run all tests
 test: install
 	$(call log,"Running tests")
-	@jest
+	@pnpm test
 
 .PHONY: lint # run eslint over all source code
 lint: install
 	$(call log,"Linting files")
-	@eslint . --ext .ts,.tsx,.js
+	@pnpm lint
 
 .PHONY: fix # try to fix eslint errors
 fix: install
 	$(call log,"Attempting to fix lint errors")
-	@eslint . --ext .ts,.tsx,.js --fix
+	@pnpm lint -- --fix
 
 .PHONY: tsc # check all typescript compiles
 tsc: install
 	$(call log,"Checking types")
-	@tsc && echo "Types are good"
+	@pnpm tsc && echo "Types are good"
 
 .PHONY: validate # run tests, eslint and tsc
 validate: install test lint tsc
