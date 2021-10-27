@@ -1,15 +1,12 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "declarationMap": true,
+    "baseUrl": ".",
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "lib": ["es5", "es6", "es7", "es2017", "es2019", "es2020", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
@@ -18,7 +15,10 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "outDir": "dist",
+    "paths": {
+      "@guardian/foo": ["packages/foo/src"],
+      "@guardian/pkgu": ["packages/pkgu/src"]
+    },
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
