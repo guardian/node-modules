@@ -26,7 +26,7 @@ async function build() {
 		log(
 			chalk.dim(
 				`extending compilerOptions:`,
-				JSON.stringify(tsconfigOverrides, null, 2),
+				JSON.stringify(tsconfigOverrides, null, 4),
 			),
 		);
 	} else {
