@@ -1,4 +1,5 @@
 const path = require('path');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const chalk = require('chalk');
 const rollup = require('rollup');
 const ts = require('rollup-plugin-ts');
@@ -42,6 +43,7 @@ async function build() {
 					...tsconfigOverrides,
 				},
 			}),
+			nodeResolve({ extensions: ['.ts', '.tsx', '.mjs', '.jsx', '.js'] }),
 		],
 	});
 

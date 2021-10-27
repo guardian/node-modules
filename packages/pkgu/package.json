@@ -13,6 +13,7 @@
     "pkgu": "index.js"
   },
   "dependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "chalk": "^4.1.2",
     "rollup": "^2.58.3",
     "rollup-plugin-ts": "^1.4.7",

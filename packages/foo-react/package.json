@@ -1,0 +1,31 @@
+{
+  "name": "@guardian/foo-react",
+  "version": "0.1.0",
+  "description": "A simple test module with react",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pkgu"
+  },
+  "devDependencies": {
+    "@guardian/pkgu": "workspace:*",
+    "@types/react": "^17.*",
+    "typescript": "^4.1.3",
+    "react": "17.*"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@types/lodash.debounce": "^4.0.6",
+    "lodash.debounce": "^4.0.8"
+  },
+  "peerDependencies": {
+    "react": "17.*"
+  }
+}
