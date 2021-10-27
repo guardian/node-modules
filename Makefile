@@ -76,11 +76,15 @@ tsc: install
 .PHONY: validate # run tests, eslint and tsc
 validate: install test lint tsc
 
+.PHONY: validate-packages # run tests, eslint and tsc
+validate-packages: install
+	$(call log,"Validating packages")
+	@jest lib/validate-packages.test.ts
+
 .PHONY: build # build all packages
-build: install clean
+build: install validate-packages clean
 	$(call log,"Building all packages")
-	@pnpm build -r
-# @rollup -c
+	@pnpm build --recursive
 
 .PHONY: changeset # create a new changeset
 changeset: install
