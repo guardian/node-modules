@@ -41,6 +41,11 @@ install:
 	@type -t pnpm > /dev/null || npm install pnpm --no-save --silent;
 	@pnpm install
 
+.PHONY: clean # delete all dist directories
+clean:
+	$(call log,"Removing old build artefacts")
+	@rm -rf packages/*/dist && echo "🧼 Done"
+
 # WORKFLOWS #####################################################
 
 .PHONY: dev # run the dev server and test suite in watch mode
@@ -72,7 +77,7 @@ tsc: install
 validate: install test lint tsc
 
 .PHONY: build # build all packages
-build: install
+build: install clean
 	$(call log,"Building all packages")
 	@rollup -c
 
