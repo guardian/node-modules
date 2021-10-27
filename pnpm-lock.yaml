@@ -8,6 +8,8 @@ importers:
       '@guardian/eslint-config-typescript': ^0.7.0
       '@guardian/prettier': ^0.7.0
       '@types/jest': ^27.0.2
+      esbuild: ^0.13.9
+      esbuild-jest: ^0.5.0
       eslint: ^7.19.0
       eslint-import-resolver-typescript: ^2.5.0
       eslint-plugin-import: ^2.25.2
@@ -24,6 +26,8 @@ importers:
       '@guardian/eslint-config-typescript': 0.7.0_d616d639d53d028d2ba89a14d6383103
       '@guardian/prettier': 0.7.0_prettier@2.4.1
       '@types/jest': 27.0.2
+      esbuild: 0.13.9
+      esbuild-jest: 0.5.0_esbuild@0.13.9
       eslint: 7.32.0
       eslint-import-resolver-typescript: 2.5.0_560ef94424f7023f0ab025f67f79aa67
       eslint-plugin-import: 2.25.2_eslint@7.32.0

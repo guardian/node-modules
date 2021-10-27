@@ -1,6 +1,8 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-	preset: 'ts-jest',
+	transform: {
+		'^.+\\.tsx?$': 'esbuild-jest',
+	},
 	testEnvironment: 'node',
-	maxWorkers: 1,
+	maxWorkers: 1, // test hand without this
 };
