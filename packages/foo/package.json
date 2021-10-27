@@ -14,13 +14,14 @@
   },
   "devDependencies": {
     "@guardian/pkgu": "workspace:*",
+    "@types/lodash.debounce": "4.*",
+    "lodash.debounce": "4.*",
     "typescript": "^4.1.3"
   },
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "@types/lodash.debounce": "^4.0.6",
-    "lodash.debounce": "^4.0.8"
+  "peerDependencies": {
+    "lodash.debounce": "4.*"
   }
 }
