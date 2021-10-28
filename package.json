@@ -23,6 +23,13 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint . --ext .ts,.tsx,.js",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "build": "pnpm build -r",
+    "validate:packages": "jest lib/validate-packages.test.ts",
+    "dev": "jest --watch",
+    "clean": "rm -rf packages/*/dist",
+    "changeset": "changeset",
+    "bump": "changeset version",
+    "release": "changeset publish"
   }
 }

@@ -1,3 +1,13 @@
+# This file is intended to make life easier for humans, it's not
+# intended to be used by machines.
+#
+# It wraps the npm-scripts in package.json in fast-running admin
+# tasks designed to catch common footguns while developing.
+#
+# Think of it as workflows for People Actions (github actions for people).
+#
+# Don't use these in CI – use the npm-scripts directly.
+
 # make node_modules binaries available
 export PATH := node_modules/.bin:$(PATH)
 
@@ -44,14 +54,14 @@ install:
 .PHONY: clean # delete all dist directories
 clean:
 	$(call log,"Removing old build artefacts")
-	@rm -rf packages/*/dist && echo "🧼 Done"
+	@pnpm clean && echo "🧼 Done"
 
 # WORKFLOWS #####################################################
 
 .PHONY: dev # run the dev server and test suite in watch mode
 dev: install
 	$(call log,"Starting the dev environment")
-	@jest --watch
+	@pnpm dev
 
 .PHONY: test # run all tests
 test: install
@@ -79,24 +89,24 @@ validate: install test lint tsc
 .PHONY: validate-packages # run tests, eslint and tsc
 validate-packages: install
 	$(call log,"Validating packages")
-	@jest lib/validate-packages.test.ts
+	@pnpm validate:packages
 
 .PHONY: build # build all packages
 build: install validate-packages clean
 	$(call log,"Building all packages")
-	@pnpm build --recursive
+	@pnpm build
 
 .PHONY: changeset # create a new changeset
 changeset: install
 	$(call log,"Creating new changeset")
-	@changeset
+	@pnpm changeset
 
 .PHONY: bump # bump all updated packages
 bump: install
 	$(call log,"Versioning updated packages")
-	@changeset version
+	@pnpm bump
 
-.PHONY: publish # publish all updated packages
-publish: install
-	$(call log,"Publishing updated packages")
-	@changeset publish
+.PHONY: release # publish all updated packages
+release: install
+	$(call log,"Releasing updated packages")
+	@pnpm release

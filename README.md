@@ -63,7 +63,7 @@ If you need to do more than the tasks defined above – for example, adding a d
 
 See [the pnpm docs](https://pnpm.io) for full information.
 
-## Publishing
+## Releasing
 
 Versioning and releasing of updated packages is managed with [changesets](https://github.com/atlassian/changesets).
 
@@ -77,5 +77,5 @@ $ make changeset
 $ make bump
 
 # push the new versions to NPM
-$ make publish
+$ make release
 ```
