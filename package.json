@@ -26,7 +26,7 @@
     "lint": "eslint . --ext .ts,.tsx,.js",
     "tsc": "tsc",
     "build": "pnpm build -r",
-    "verify-packages": "node lib/verify-packages.test.ts",
+    "verify-packages": "node lib/verify-packages.js",
     "dev": "jest --watch",
     "clean": "rm -rf packages/*/dist",
     "changeset": "changeset",
