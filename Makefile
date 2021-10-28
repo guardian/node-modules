@@ -86,13 +86,13 @@ tsc: install
 .PHONY: validate # run tests, eslint and tsc
 validate: install test lint tsc
 
-.PHONY: validate-packages # run tests, eslint and tsc
-validate-packages: install
-	$(call log,"Validating packages")
-	@pnpm validate:packages
+.PHONY: verify-packages # verify all packages are setup correctly
+verify-packages: install
+	$(call log,"Verifying packages")
+	@pnpm verify-packages
 
 .PHONY: build # build all packages
-build: install validate-packages clean
+build: install verify-packages clean
 	$(call log,"Building all packages")
 	@pnpm build
 
