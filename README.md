@@ -24,7 +24,7 @@ The following workflows are pre-configured:
 -   [x] TypeScript configuration
 -   [x] Eslint configuration
 -   [x] Testing (using [Jest](https://jestjs.io/))
--   [ ] Bundling (using [Rollup](https://rollupjs.org/))
+-   [x] Bundling (dogfooding `@guardian/pkgu`)
 -   [ ] Versioning (using [changesets](https://github.com/atlassian/changesets))
 -   [ ] Publishing (using [changesets](https://github.com/atlassian/changesets))
 
