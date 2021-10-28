@@ -23,7 +23,7 @@ endef
 .DEFAULT_GOAL: help
 .PHONY: help # list available commands
 help:
-	$(call log,"Listing \'make\' options")
+	$(call log,"Listing \'make\' commands")
 	@fnm exec node ./lib/describe-makefile.js
 
 # ENVIRONMENT #########################################
@@ -58,7 +58,7 @@ clean:
 
 # WORKFLOWS #####################################################
 
-.PHONY: dev # run the dev server and test suite in watch mode
+.PHONY: dev # run the test suite in watch mode
 dev: install
 	$(call log,"Starting the dev environment")
 	@pnpm dev

@@ -4,7 +4,7 @@
 
 This repo is intended to make it as easy as possible to develop and update packages in accordance with [the Guardian's recommendations](https://github.com/guardian/recommendations/blob/main/npm-packages.md).
 
-## Just your source code
+## Just bring your source code
 
 🚧 _It's not ready for new packages yet, but when it is..._
 
@@ -12,6 +12,7 @@ Packages only need to worry about what they do – everything else is managed by
 
 > 1. Create a directory in `./packages`
 > 2. Add a `package.json`, `README.md` and `src/index.ts`
+> 3. Run `make verify-packages`
 >
 > You now have a minimal but verifiable, publishable package.
 
@@ -24,13 +25,24 @@ The following workflows are pre-configured:
 -   [x] TypeScript configuration
 -   [x] Eslint configuration
 -   [x] Testing (using [Jest](https://jestjs.io/))
--   [x] Bundling (dogfooding `@guardian/pkgu`)
+-   [x] Bundling (using `@guardian/pkgu` – a member of this project)
 -   [ ] Versioning (using [changesets](https://github.com/atlassian/changesets))
 -   [ ] Publishing (using [changesets](https://github.com/atlassian/changesets))
 
 ## Development
 
-Common development tasks are defined in the [`makefile`](./Makefile).
+#### _tl;dr_
+
+1. Clone the repo
+2. Run `make dev`
+
+#### In more depth...
+
+Project tasks are defined in the `npm-scripts` of the root `package.json` (`build`, `test` etc).
+
+Human-optimised versions are defined in the [`makefile`](./Makefile), which wraps the `npm-scripts` in fast-running admin tasks that catch common footguns while developing (node version, up-to-date deps etc).
+
+_Think of the `makefile` as workflows for People Actions ([GitHub Actions](https://github.com/features/actions) for people)..._
 
 Run them from the terminal using `make`:
 
@@ -45,11 +57,11 @@ Run them from the terminal using `make`:
 -   `make bump` bump all updated packages
 -   `make publish` publish all updated packages
 
-_Run `make help` to see this list of commands in the terminal._
+_Run `make help` to see the full list of commands in the terminal._
 
 #### Project requirements
 
-Node version, package manager, NPM dependencies etc are automatically managed by the project – you can use the `make` commands above without worrying about them.
+Node version, package manager, NPM dependencies etc are automatically managed by the `make` tasks – you can use the commands above without worrying about them.
 
 _You'll be prompted if you need to install anything._
 
@@ -57,9 +69,7 @@ _You'll be prompted if you need to install anything._
 
 Behind the scenes, the project is a [pnpm workspace](https://pnpm.io/workspaces).
 
-This is managed for you in the `makefile`, without the developer needing to get too deep into the weeds.
-
-If you need to do more than the tasks defined above – for example, adding a dependency to your package – you should use `pnpm` directly.
+If you need to do more than the tasks defined above – for example, adding a dependency to your package or managing CI – you should use `pnpm` directly.
 
 See [the pnpm docs](https://pnpm.io) for full information.
 
