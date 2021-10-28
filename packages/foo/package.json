@@ -13,7 +13,7 @@
     "build": "pkgu"
   },
   "devDependencies": {
-    "@guardian/pkgu": "workspace:*",
+    "@guardian/pkgu": "*",
     "@types/lodash.debounce": "4.*",
     "lodash.debounce": "4.*",
     "typescript": "^4.1.3"
