@@ -1,7 +1,7 @@
 {
   "name": "@guardian/pkgu",
   "version": "0.7.0",
-  "description": "Automatically build @guardian packages for publishing to NPM inline with our recommendations.",
+  "description": "Automatically build `@guardian` packages for publishing to NPM in line with our recommendations",
   "homepage": "https://github.com/guardian/pkgu#readme",
   "bugs": {
     "url": "https://github.com/guardian/pkgu/issues"

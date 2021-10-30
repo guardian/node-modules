@@ -2,7 +2,7 @@
   "name": "@guardian/node-modules",
   "version": "0.1.0",
   "private": true,
-  "description": "CSTI monorepo",
+  "description": "🧪 An experimental monorepo for `@guardian/*` NPM packages",
   "license": "ISC",
   "scripts": {
     "build": "pnpm build -r",

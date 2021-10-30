@@ -1,7 +1,7 @@
 {
   "name": "@guardian/editorconfig",
   "version": "1.0.0",
-  "description": "A standard .editorconfig for the Guardian",
+  "description": "A standard `.editorconfig` for the Guardian",
   "license": "ISC",
   "author": "",
   "type": "module",
