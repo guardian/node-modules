@@ -23,7 +23,8 @@
     }
   },
   "lint-staged": {
-    "**/package.json": "sort-package-json"
+    "**/package.json": "sort-package-json",
+    "*": "node lib/update-readme.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.17.0",
