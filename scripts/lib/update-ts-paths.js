@@ -3,8 +3,12 @@ import { createRequire } from 'module';
 import path from 'path';
 import { packageDirectorySync } from 'pkg-dir';
 import prettier from 'prettier';
-import { getPathTo } from '../lib/get-path-to.js';
+import { getPathTo } from './get-path-to.js';
 
+/**
+ * Updates the root `tsconfig.json#compilerOptions.paths` to match the directory
+ * structure of ./packages
+ */
 export const updateTsPaths = (packages) => {
 	const projectRoot = packageDirectorySync();
 	const require = createRequire(import.meta.url);

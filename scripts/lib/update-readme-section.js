@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url';
 import updateSection from 'update-section';
-import { getPathTo } from '../../lib/get-path-to.js';
+import { getPathTo } from './get-path-to.js';
 
-export const generateMessage = ({ label, url, updates, original }) => {
+export const updateReadmeSection = ({ label, url, updates, original }) => {
 	const START = `<!-- START ${label} -->`;
 	const END = `<!-- END ${label} -->`;
 

@@ -12,7 +12,7 @@
     "clean": "rm -rf packages/*/dist",
     "dev": "jest --watch",
     "lint": "eslint . --ext .ts,.tsx,.js,.cjs,.mjs",
-    "manage-repo": "node scripts/manage-repo/index.js",
+    "manage-repo": "node scripts/manage-repo.js",
     "prepare": "husky install",
     "release": "changeset publish",
     "test": "jest",
@@ -22,7 +22,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "*": "node scripts/manage-repo/index.js"
+      "*": "node scripts/manage-repo.js"
     }
   },
   "lint-staged": {
