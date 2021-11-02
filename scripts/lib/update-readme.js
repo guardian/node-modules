@@ -10,7 +10,7 @@ export const updateReadme = (packages) => {
 	readme = updateReadmeSection({
 		updates: packages.map(
 			({ pkg, path }) =>
-				`-   [\`${pkg.name}\`](https://github.com/guardian/node-modules/tree/main/${path})\n` +
+				`-   [\`${pkg.name}\`](${path})\n` +
 				`    -   ${pkg.description}.`,
 		),
 		label: 'PACKAGES',
