@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.5
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6
+      - uses: guardian/actions-setup-node@v2.4.1
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - name: Create Release PR
+        uses: changesets/action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
