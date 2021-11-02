@@ -88,6 +88,7 @@ Run them from the terminal using `make`. Here are some common examples:
 -   `make help` list available commands
 -   `make install` install everything you need to run the project
 -   `make lint` run eslint over all source code
+-   `make manage-repo` keep repo config up-to-date
 -   `make release` publish all updated packages
 -   `make test` run all tests
 -   `make tsc` check all typescript compiles

@@ -110,3 +110,8 @@ bump: install
 release: install
 	$(call log,"Releasing updated packages")
 	@pnpm release
+
+.PHONY: manage-repo # keep repo config up-to-date
+manage-repo: install
+	$(call log,"Rebuilding repo config files")
+	@pnpm manage-repo
