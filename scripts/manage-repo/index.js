@@ -1,4 +1,4 @@
-import { getPackages } from '../get-packages.js';
+import { getPackages } from '../lib/get-packages.js';
 import { updateReadme } from './update-readme/index.js';
 import { updateTsPaths } from './update-ts-paths.js';
 

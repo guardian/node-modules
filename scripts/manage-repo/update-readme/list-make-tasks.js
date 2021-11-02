@@ -1,4 +1,4 @@
-import { getMakefileTargets } from '../../get-makefile-targets.js';
+import { getMakefileTargets } from '../../lib/get-makefile-targets.js';
 import { generateMessage } from './generate-message.js';
 
 export const listMakeTasks = ({ readme }) =>

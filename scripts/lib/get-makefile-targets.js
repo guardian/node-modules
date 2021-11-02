@@ -1,17 +1,9 @@
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { getPathTo } from './get-path-to.js';
 
 export const getMakefileTargets = () =>
 	fs
-		.readFileSync(
-			path.resolve(
-				path.dirname(fileURLToPath(import.meta.url)),
-				'..',
-				'makefile',
-			),
-			'utf8',
-		)
+		.readFileSync(getPathTo('makefile'), 'utf8')
 		.split('\n')
 		.map((line) => line.match(/.PHONY: (?!--)([\S]+)( # )?(.*)/))
 		.filter(Boolean)

@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
-import { getPackages } from './get-packages.js';
+import { getPackages } from './lib/get-packages.js';
 
 // for each package run some tests against it...
 getPackages().forEach(({ pkg, files, path }) => {
