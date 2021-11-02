@@ -3,6 +3,7 @@ import { createRequire } from 'module';
 import path from 'path';
 import { packageDirectorySync } from 'pkg-dir';
 import prettier from 'prettier';
+import { getPathTo } from '../lib/get-path-to.js';
 
 export const updateTsPaths = (packages) => {
 	const projectRoot = packageDirectorySync();
@@ -13,10 +14,7 @@ export const updateTsPaths = (packages) => {
 
 	const paths = packages.reduce((acc, { pkg, path: packagePath }) => {
 		acc[pkg.name] = [
-			path.relative(
-				projectRoot,
-				path.resolve(packagePath, 'src', 'index.ts'),
-			),
+			getPathTo(path.resolve(packagePath, 'src', 'index.ts')),
 		];
 		return acc;
 	}, {});

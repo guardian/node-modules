@@ -1,11 +1,10 @@
 import fs from 'fs';
-import path from 'path';
-import { packageDirectorySync } from 'pkg-dir';
+import { getPathTo } from '../../lib/get-path-to.js';
 import { listMakeTasks } from './list-make-tasks.js';
 import { listPackages } from './list-packages.js';
 
 export const updateReadme = (packages) => {
-	const readMePath = path.resolve(packageDirectorySync(), 'README.md');
+	const readMePath = getPathTo('README.md');
 	let readme = fs.readFileSync(readMePath, 'utf8');
 
 	readme = listPackages({ packages, readme });
