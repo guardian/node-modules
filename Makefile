@@ -86,11 +86,6 @@ tsc: install
 .PHONY: validate # run tests, eslint and tsc
 validate: install test lint tsc
 
-.PHONY: verify-packages # verify all packages are setup correctly
-verify-packages: install
-	$(call log,"Verifying packages")
-	@pnpm verify-packages
-
 .PHONY: build # build all packages
 build: install verify-packages clean
 	$(call log,"Building all packages")
@@ -115,3 +110,8 @@ release: install
 manage-repo: install
 	$(call log,"Rebuilding repo config files")
 	@pnpm manage-repo
+
+.PHONY: verify-packages # verify all packages are setup correctly
+verify-packages: install
+	$(call log,"Verifying packages")
+	@pnpm verify-packages
