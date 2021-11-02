@@ -72,7 +72,7 @@ These are the `npm-scripts` wrapped in unobtrusive admin tasks that overcome com
 
 > 🧑‍💻 If it helps, think of the `makefile` tasks like GitHub Actions for people.
 
-####Running `makefile` tasks
+#### Running `makefile` tasks
 
 Run them from the terminal using `make`. Here are some common examples:
 
