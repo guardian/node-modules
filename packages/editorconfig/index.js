@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { createRequire } from 'module';
+import path from 'path';
 import { packageDirectorySync } from 'pkg-dir';
 
 const require = createRequire(import.meta.url);
@@ -12,6 +13,6 @@ const warning = `# THIS FILE IS AUTO-GENERATED EVERY TIME YOU INSTALL ${
 `;
 
 writeFileSync(
-	packageDirectorySync({ cwd: '../' }) + '/.editorconfig',
+	path.resolve(packageDirectorySync({ cwd: '../' }), '.editorconfig'),
 	warning + editorconfig,
 );
