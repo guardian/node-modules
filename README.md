@@ -92,7 +92,7 @@ Run them from the terminal using `make`. Here are some common examples:
 -   `make release` publish all updated packages
 -   `make test` run all tests
 -   `make tsc` check all typescript compiles
--   `make validate` run tests, eslint and tsc
+-   `make validate` runs `test`, `lint`, `tsc` and `verify-packages`
 -   `make verify-packages` verify all packages are setup correctly
 
 <!-- END MAKE TASKS -->

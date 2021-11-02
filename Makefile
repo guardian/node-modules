@@ -83,8 +83,8 @@ tsc: install
 	$(call log,"Checking types")
 	@pnpm tsc && echo "Types are good"
 
-.PHONY: validate # run tests, eslint and tsc
-validate: install test lint tsc
+.PHONY: validate # runs `test`, `lint`, `tsc` and `verify-packages`
+validate: install test lint tsc verify-packages
 
 .PHONY: build # build all packages
 build: install verify-packages clean
