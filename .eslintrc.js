@@ -33,7 +33,7 @@ module.exports = {
 			},
 		},
 		{
-			files: ['lib/**/*'],
+			files: ['scripts/**/*'],
 			rules: {
 				// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-var-requires.md
 				// node allows you to `require` whenever you like

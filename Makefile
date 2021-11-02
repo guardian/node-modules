@@ -24,7 +24,7 @@ endef
 .PHONY: help # list available commands
 help:
 	$(call log,"Listing \'make\' commands")
-	@fnm exec node ./lib/describe-makefile.js
+	@fnm exec node ./scripts/describe-makefile.js
 
 # ENVIRONMENT #########################################
 
