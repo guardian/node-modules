@@ -26,7 +26,7 @@
   },
   "lint-staged": {
     "**/package.json": "sort-package-json",
-    "*": "node scripts/manage-repo/index.js"
+    "*.{ts,tsx,js,cjs,mjs}": "eslint --fix"
   },
   "devDependencies": {
     "@changesets/cli": "^2.17.0",
