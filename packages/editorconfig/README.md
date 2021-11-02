@@ -1,6 +1,6 @@
 # @guardian/editorconfig
 
-> A standard .editorconfig for the Guardian
+> A standard `.editorconfig` for the Guardian
 
 ## Usage
 
