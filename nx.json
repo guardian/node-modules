@@ -1,6 +1,6 @@
 {
   "extends": "nx/presets/core.json",
-  "npmScope": "node-modules",
+  "npmScope": "guardian",
   "affected": {
     "defaultBase": "main"
   },
@@ -9,15 +9,44 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
         "cacheableOperations": [
           "build",
           "lint",
           "test",
           "e2e"
-        ]
+        ],
+        "accessToken": "ZWI4YzAzNzAtY2VkYi00NDY5LWIxM2QtNTBlZmM0NTI4NzUzfHJlYWQtd3JpdGU="
       }
     }
+  },
+  "targetDependencies": {
+    "build": [
+		{
+		  "target": "clean",
+		  "projects": "self"
+		},
+		{
+		  "target": "build",
+		  "projects": "dependencies"
+		}
+    ],
+    "test": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "e2e": [
+      {
+        "target": "build",
+        "projects": "self"
+      },
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

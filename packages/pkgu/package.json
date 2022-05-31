@@ -1,0 +1,43 @@
+{
+  "name": "@guardian/pkgu",
+  "version": "0.7.0",
+  "description": "Automatically build `@guardian` packages for publishing to NPM in line with our recommendations",
+  "homepage": "https://github.com/guardian/pkgu#readme",
+  "bugs": {
+    "url": "https://github.com/guardian/pkgu/issues"
+  },
+  "repository": "https://github.com/guardian/pkgu.git",
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "bin": {
+    "pkgu": "./dist/cjs/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "ts-node ./src/index.ts"
+  },
+  "dependencies": {
+    "@guardian/libs": "^5.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "read-pkg-up": "^7.0.0",
+    "rollup": "^2.72.1",
+    "rollup-plugin-hashbang": "^3.0.0",
+    "rollup-plugin-ts": "^2.0.0",
+    "sade": "^1.8.1",
+    "type-fest": "^2.13.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.2",
+    "web-vitals": "^2.1.4"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
